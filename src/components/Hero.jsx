@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import Reveal from "./Reveal";
 
 export default function Hero() {
 
@@ -20,17 +21,20 @@ export default function Hero() {
           animate={{ opacity:1, y:0 }}
           transition={{ duration:0.8 }}
         >
-
+         <Reveal delay={0.1}>
           <span className="hero-tag">
             Frontend Developer • Nigeria
           </span>
-
+          </Reveal>
+        <Reveal delay={0.2}>
           <h1>
 
             Crafting modern digital experiences with clean frontend engineering.
 
           </h1>
+        </Reveal>
 
+            <Reveal delay={0.3}>
           <div className="typewriter">
 
             <TypeAnimation
@@ -49,13 +53,17 @@ export default function Hero() {
             />
 
           </div>
+            </Reveal>
 
+              <Reveal delay={0.4}>
           <p>
 
             I build premium responsive websites and modern web applications using React, Tailwind CSS, Bootstrap, Flask, and scalable frontend technologies.
 
           </p>
+            </Reveal>
 
+          <Reveal delay={0.5}>
           <div className="hero-buttons">
 
             <a href="#projects" className="primary-btn">
@@ -67,6 +75,7 @@ export default function Hero() {
             </a>
 
           </div>
+            </Reveal>
 
         </motion.div>
 

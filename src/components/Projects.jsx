@@ -1,31 +1,36 @@
 import { motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
+import restaurant from "../assets/projects/restaurant.jpg";
+import business from "../assets/projects/business.jpg";
+import ecommerce from "../assets/projects/ecommerce.jpg";
 
 const projects = [
 
   {
+    image: restaurant,
     title: "Modern Restaurant Website",
     category: "Frontend Development",
     description:
-      "A premium responsive restaurant website with smooth UI interactions, elegant layouts, and modern frontend architecture.",
+      "A premium responsive restaurant website with elegant UI systems, smooth animations, and modern frontend architecture.",
   },
 
   {
+    image: business,
     title: "Business Company Website",
     category: "Corporate Design",
     description:
-      "Professional company website designed for branding, trust building, and scalable digital presence.",
+      "Professional company website focused on modern branding, business trust, and scalable digital presence.",
   },
 
   {
+    image: ecommerce,
     title: "E-Commerce Store",
     category: "Fullstack Development",
     description:
-      "Modern ecommerce interface with responsive product layouts, optimized user experience, and scalable structure.",
+      "Modern ecommerce interface with responsive product layouts and premium user experience design.",
   },
 
 ];
-
 export default function Projects() {
 
   return (
@@ -72,7 +77,14 @@ export default function Projects() {
                   transition={{ duration:0.3 }}
                 >
 
-                  <div className="project-image">
+                  <div
+  className="project-image"
+  style={{
+    backgroundImage: `url(${project.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
 
                     <div className="image-overlay"></div>
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FiMail,
@@ -6,8 +7,42 @@ import {
 } from "react-icons/fi";
 
 export default function Contact() {
+    const [form, setForm] = useState({
+  name: "",
+  email: "",
+  message: ""
+});
+
+const handleChange = (e) => {
+  setForm({ ...form, [e.target.name]: e.target.value });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  try {
+    const res = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(form)
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Message sent successfully 🚀");
+      setForm({ name: "", email: "", message: "" });
+    }
+
+  } catch {
+    alert("Error sending message");
+  }
+};
 
   return (
+    
 
     <section
       className="contact section"
@@ -87,30 +122,37 @@ export default function Contact() {
 
           </div>
 
-          <form className="contact-form">
+         <form className="contact-form" onSubmit={handleSubmit}>
 
-            <input
-              type="text"
-              placeholder="Your Name"
-            />
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    value={form.name}
+    onChange={handleChange}
+  />
 
-            <input
-              type="email"
-              placeholder="Your Email"
-            />
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    value={form.email}
+    onChange={handleChange}
+  />
 
-            <textarea
-              placeholder="Tell me about your project..."
-              rows="6"
-            ></textarea>
+  <textarea
+    name="message"
+    placeholder="Tell me about your project..."
+    rows="6"
+    value={form.message}
+    onChange={handleChange}
+  ></textarea>
 
-            <button type="submit">
+  <button type="submit">
+    Send Message
+  </button>
 
-              Send Message
-
-            </button>
-
-          </form>
+</form>
 
         </motion.div>
 
