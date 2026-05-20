@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
 import {
   FiLayout,
   FiCode,
-  FiSmartphone,
-  FiServer
+  FiSmartphone
 } from "react-icons/fi";
+
+import Reveal from "./Reveal";
 
 const services = [
 
@@ -12,29 +12,22 @@ const services = [
     icon: <FiLayout />,
     title: "Frontend Development",
     description:
-      "Building premium responsive interfaces with clean architecture and scalable frontend systems.",
+      "Modern responsive frontend interfaces built with scalable architecture, smooth interactions, and premium user experience."
   },
 
   {
     icon: <FiCode />,
-    title: "React Web Apps",
+    title: "Fullstack Web Applications",
     description:
-      "Modern React applications focused on performance, responsiveness, and user experience.",
+      "Professional web applications using React and Flask with clean backend integration and optimized performance."
   },
 
   {
     icon: <FiSmartphone />,
-    title: "Responsive Design",
+    title: "Responsive Website Design",
     description:
-      "Creating mobile-first websites optimized across phones, tablets, and desktops.",
-  },
-
-  {
-    icon: <FiServer />,
-    title: "Backend Integration",
-    description:
-      "Connecting frontend applications with Flask APIs and scalable backend services.",
-  },
+      "Mobile-first websites optimized for all screen sizes with modern layouts, accessibility, and seamless responsiveness."
+  }
 
 ];
 
@@ -49,12 +42,7 @@ export default function Services() {
 
       <div className="container">
 
-        <motion.div
-          initial={{ opacity:0, y:50 }}
-          whileInView={{ opacity:1, y:0 }}
-          transition={{ duration:0.7 }}
-          viewport={{ once:true }}
-        >
+        <Reveal>
 
           <span className="section-tag">
             Services
@@ -62,49 +50,42 @@ export default function Services() {
 
           <h2 className="section-title">
 
-            Building modern digital products with clean engineering.
+            Professional development solutions built for modern businesses.
 
           </h2>
 
-          <p className="section-subtitle">
+        </Reveal>
 
-            I help brands and businesses create modern responsive websites and scalable frontend applications with polished user experiences.
+        <div className="services-grid">
 
-          </p>
+          {services.map((service, index) => (
 
-          <div className="services-grid">
+            <Reveal
+              key={index}
+              delay={index * 0.15}
+            >
 
-            {
-              services.map((service, index) => (
+              <div className="service-card">
 
-                <motion.div
-                  className="service-card"
-                  key={index}
-                  whileHover={{ y:-10 }}
-                >
+                <div className="service-icon">
+                  {service.icon}
+                </div>
 
-                  <div className="service-icon">
+                <h3>
+                  {service.title}
+                </h3>
 
-                    {service.icon}
+                <p>
+                  {service.description}
+                </p>
 
-                  </div>
+              </div>
 
-                  <h3>
-                    {service.title}
-                  </h3>
+            </Reveal>
 
-                  <p>
-                    {service.description}
-                  </p>
+          ))}
 
-                </motion.div>
-
-              ))
-            }
-
-          </div>
-
-        </motion.div>
+        </div>
 
       </div>
 

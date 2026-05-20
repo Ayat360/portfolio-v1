@@ -1,19 +1,46 @@
-import { motion } from "framer-motion";
+import Reveal from "./Reveal";
 
-const skills = [
+const skillGroups = [
 
-  "React",
-  "JavaScript",
-  "Tailwind CSS",
-  "Bootstrap",
-  "HTML5",
-  "CSS3",
-  "Flask",
-  "Python",
-  "REST APIs",
-  "Git & GitHub",
-  "Responsive Design",
-  "UI/UX"
+  {
+    title: "Frontend Development",
+    description:
+      "Building responsive, modern, and scalable interfaces with clean architecture and smooth user experiences.",
+    tech: [
+      "React",
+      "Tailwind CSS",
+      "Bootstrap",
+      "JavaScript",
+      "Framer Motion",
+      "Responsive Design"
+    ]
+  },
+
+  {
+    title: "Backend Development",
+    description:
+      "Developing secure backend systems, APIs, and application logic with scalable structures.",
+    tech: [
+      "Python",
+      "Flask",
+      "REST APIs",
+      "Authentication",
+      "Database Integration"
+    ]
+  },
+
+  {
+    title: "Tools & Workflow",
+    description:
+      "Using modern developer workflows and tools for efficient collaboration and production-ready development.",
+    tech: [
+      "Git & GitHub",
+      "VS Code",
+      "Figma",
+      "Vercel",
+      "Render"
+    ]
+  }
 
 ];
 
@@ -28,49 +55,54 @@ export default function Skills() {
 
       <div className="container">
 
-        <motion.div
-          initial={{ opacity:0, y:50 }}
-          whileInView={{ opacity:1, y:0 }}
-          transition={{ duration:0.7 }}
-          viewport={{ once:true }}
-        >
+        <Reveal>
 
           <span className="section-tag">
             Tech Stack
           </span>
 
           <h2 className="section-title">
-
-            Modern technologies for scalable frontend engineering.
-
+            Modern technologies for high-performance digital products.
           </h2>
 
-          <p className="section-subtitle">
+        </Reveal>
 
-            I build modern responsive applications using industry-standard frontend and backend technologies focused on performance, accessibility, and elegant UI systems.
+        <div className="skills-grid">
 
-          </p>
+          {skillGroups.map((group, index) => (
 
-          <div className="skills-grid">
+            <Reveal
+              key={index}
+              delay={index * 0.15}
+            >
 
-            {
-              skills.map((skill, index) => (
+              <div className="skill-card">
 
-                <div
-                  className="skill-card"
-                  key={index}
-                >
+                <h3>{group.title}</h3>
 
-                  {skill}
+                <p>
+                  {group.description}
+                </p>
+
+                <div className="tech-list">
+
+                  {group.tech.map((item, i) => (
+
+                    <span key={i}>
+                      {item}
+                    </span>
+
+                  ))}
 
                 </div>
 
-              ))
-            }
+              </div>
 
-          </div>
+            </Reveal>
 
-        </motion.div>
+          ))}
+
+        </div>
 
       </div>
 

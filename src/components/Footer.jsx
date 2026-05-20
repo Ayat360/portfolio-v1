@@ -4,12 +4,19 @@ import {
   FiLinkedin,
   FiTwitter
 } from "react-icons/fi";
+import leaf from "../assets/leaf.png";
 
 export default function Footer() {
 
   return (
 
     <footer className="footer">
+
+  <img
+    src={leaf}
+    alt=""
+    className="footer-leaf"
+  />
 
       <div className="container footer-container">
 
