@@ -34,19 +34,19 @@ export default function Footer() {
 
         <div className="footer-socials">
 
-          <a href="#">
+          <a href="https://github.com/Ayat360">
             <FiGithub />
           </a>
 
-          <a href="#">
+          <a href="https://instagram.com/proximaa3graphics">
             <FiInstagram />
           </a>
 
-          <a href="#">
+          <a href="https://www.linkedin.com/in/aregbe-adekunle-7265b3361">
             <FiLinkedin />
           </a>
 
-          <a href="#">
+          <a href="https://twitter.com/proximaa3">
             <FiTwitter />
           </a>
 
